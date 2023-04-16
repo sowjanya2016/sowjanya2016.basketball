@@ -1,0 +1,13 @@
+<div style="padding :20px">
+  <h3>{{title}}</h3>
+  <select name="teamSelect" id="teamSelect" [(ngModel)]="selectedProperty">
+    <option *ngFor="let opt of teamsList" [ngValue]="opt">{{opt.full_name}}</option>
+  </select>&nbsp;&nbsp;
+  <button type="button" class="btn btn-primary" id="trackBtn" (click)="trackTeam()">Track team</button>
+</div>
+<br><br>
+<div class="container" *ngIf="selectedTeams.length != 0">
+  <ng-container *ngFor="let team of selectedTeams">
+    <app-teamscores [teamResults]="team" (removeTeam)="removeTeamCard($event)"></app-teamscores>
+  </ng-container>
+</div>

@@ -1,0 +1,18 @@
+<div class="card mb-3" style="max-width: 340px;padding: 20px;margin:20px">
+  <div class="row g-0">
+    <div class="col-md-8">
+      <h6>{{selectedTeam?.team?.full_name}} [{{selectedTeam?.team?.abbreviation}}]</h6>
+      <div>{{selectedTeam?.team?.conference}} conference</div>
+    </div>
+  </div>
+  <hr class="hr" />
+  <h6>Scores of past 12 days:</h6>
+  <div *ngFor="let score of selectedTeam?.past12daysResults">
+    <div><b>{{score?.home_team?.abbreviation}}</b> {{score?.home_team_score}} -
+      <b>{{score.visitor_team?.abbreviation}}</b> {{score.visitor_team_score}}
+    </div>
+  </div>
+  <button type="button" class="btn btn-success" id="backBtn">
+    <a routerLink="/results" style="color: white;text-decoration:none"><< Bck to all team
+      stats</a></button>
+</div>

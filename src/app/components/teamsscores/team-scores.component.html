@@ -1,0 +1,33 @@
+<div class="card mb-3" style="max-width: 340px;">
+  <div class="row g-0">
+    <div class="col-md-8" style="margin-top: 5px;margin-left: 5px;">
+      <h6 >{{teamResults.team.full_name}} [{{teamResults.team.abbreviation}}]</h6>
+      <div >{{teamResults.team.conference}} conference</div>
+    </div>
+    <div class="col-md-2" style="text-align: right;margin: auto;">
+      <button type="button" class="close" aria-label="Close" id="remove{{teamResults.team.abbreviation}}"
+      (click)="removeCard(teamResults.team.abbreviation)"  >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <hr class="hr" />
+  <div class="row g-0">
+    <div class="col-md-8">
+      <div class="card-body">
+        <h6>Results of past 12 days:</h6>
+        <ng-container style="display: inline" *ngFor="let game of teamResults.past12daysResults">
+          <span style="margin:2px" [ngClass]="game.gameResult == 'W' ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger'">{{game.gameResult}}</span>
+        </ng-container>
+        <p class="card-text">Ag pts scored: {{teamResults?.team?.avgPtsScored}}</p>
+        <p class="card-text">Avg pts conceded {{teamResults?.team?.avgPtsConceded}}</p>
+        <button type="button" class="btn btn-success" id="results{{teamResults.team.abbreviation}}">
+          <a [routerLink]="['/results',teamResults.team.abbreviation]" style="color: white;text-decoration:none">See
+            game results >></a></button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <img [src]="teamResults.team.logoUrl" class="img-fluid rounded-start" alt="logo">
+    </div>
+  </div>
+</div>
